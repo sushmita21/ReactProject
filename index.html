@@ -15,7 +15,10 @@
     var App = React.createClass({ /* we create a class in React to create a component like Profile or Hobby List;
     In createClass we pass a specification object which means we can have as many methods we want but render method is the msost imp.*/
         render: function () { /* render method is an important method in React ...*/
-        return(<div>Hello World!</div>);
+        return(<div>
+            <Profile/>
+            <Hobbies/>
+        </div>);
         }
     });
     ReactDOM.render(<App/>, document.getElementById('content'));/*where we want the  var App component to be rendered; second arg is
@@ -30,7 +33,25 @@
             </div>);
         }
     });
-    
+
+    //ReactDOM.render(<Profile/>,document.getElementById('content'));
+
+    var Hobbies = React.createClass({
+        render: function () {
+            return(<div>
+                <h5>Sushmita's Hobbies</h5>
+                <div>
+                    <ul>
+                        <li>Painting</li>
+                        <li>Painting</li>
+                        <li>Painting</li>
+                    </ul>
+                </div>
+            </div>);
+        }
+    });
+
+    //ReactDOM.render(<Profile/>,<Hobbies/>, document.getElementById('content'));
 </script>
 </body>
 </html>
