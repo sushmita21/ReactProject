@@ -5,6 +5,23 @@
     <title>First React Dummy Project</title>
 </head>
 <body>
+<div id="content"></div>
+<script src="https://fb.me/react-0.14.6.js"></script>
+<script src="https://fb.me/react-dom-0.14.6.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
+<script type="text/jsx"> /*take a JS var and use it as XML/html tag ---> JSX : JavaScript Syntac Extension*/
+    /*Add your React code here*/
+    /* Writing my first React component*/
+    var App = React.createClass({ /* we create a class in React to create a component like Profile or Hobby List;
+    In createClass we pass a specification object which means we can have as many methods we want but render method is the msost imp.*/
+        render: function () { /* render method is an important method in React ...*/
+        return(<div>Hello World!</div>);
+        }
+    });
+    ReactDOM.render(<App/>, document.getElementById('content'));/*where we want the  var App component to be rendered; second arg is
+    the div which will contain the app*/
 
+    
+</script>
 </body>
 </html>
