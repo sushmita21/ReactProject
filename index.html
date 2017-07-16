@@ -21,6 +21,15 @@
     ReactDOM.render(<App/>, document.getElementById('content'));/*where we want the  var App component to be rendered; second arg is
     the div which will contain the app*/
 
+    /*second componenet*/
+    var Profile = React.createClass({
+        render: function () {
+            return (<div>
+                <h3>Sushmita's Profile</h3>
+                <img src="http://mta.mycertiportstory.com/wp-content/uploads/sites/13/2014/07/cc-150x150.jpg"/>
+            </div>);
+        }
+    });
     
 </script>
 </body>
