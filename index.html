@@ -11,25 +11,41 @@
 <script src="http://fb.me/JSXTransformer-0.12.1.js"></script>
 <script type="text/jsx"> /*take a JS var and use it as XML/html tag ---> JSX : JavaScript Syntac Extension*/
     /*Add your React code here*/
+    /*DATA*/
+
+    var DATA ={
+        name: 'Sushmita Chaudhari',
+        imgURL: "http://mta.mycertiportstory.com/wp-content/uploads/sites/13/2014/07/cc-150x150.jpg",
+        hobbyList: ['Painting','Painting1','Painting2']
+    }
+
+    /*how to send this data to App??? if we fetch data from API??*/
+    /*ANSWER---> change the ReactDOM.render() method*/
+
     /* Writing my first React component*/
     var App = React.createClass({ /* we create a class in React to create a component like Profile or Hobby List;
     In createClass we pass a specification object which means we can have as many methods we want but render method is the msost imp.*/
         render: function () { /* render method is an important method in React ...*/
-        return(<div>
-            <Profile/>
-            <Hobbies/>
+
+            /*this.props.profileData retrieves the data from JS element DATA*/
+            return(<div>
+            <Profile
+                    name ={this.props.profileData.name}
+                    image ={this.props.profileData.imgURL}
+            />
+            <Hobbies
+                    name ={this.props.profileData.name}
+            hobbyList ={this.props.profileData.hobbyList}/>
         </div>);
         }
     });
-    ReactDOM.render(<App/>, document.getElementById('content'));/*where we want the  var App component to be rendered; second arg is
-    the div which will contain the app*/
 
     /*second componenet*/
     var Profile = React.createClass({
         render: function () {
             return (<div>
-                <h3>Sushmita's Profile</h3>
-                <img src="http://mta.mycertiportstory.com/wp-content/uploads/sites/13/2014/07/cc-150x150.jpg"/>
+                <h3>{this.props.name}'s Profile</h3>
+                <img src={this.props.image}/>
             </div>);
         }
     });
@@ -38,18 +54,24 @@
 
     var Hobbies = React.createClass({
         render: function () {
+            /*first we need loop through the hobby list*/
+            var hobbies = this.props.hobbyList.map(function (hobby, index) {
+                return(<li key={index}>{hobby}</li>);
+            })
             return(<div>
-                <h5>Sushmita's Hobbies</h5>
+                <h5>{this.props.name}'s Hobbies</h5>
                 <div>
                     <ul>
-                        <li>Painting</li>
-                        <li>Painting</li>
-                        <li>Painting</li>
-                    </ul>
+                        {hobbies}
+                        </ul>
                 </div>
             </div>);
         }
     });
+    /*render only after all components are built*/
+    ReactDOM.render(<App profileData={DATA}/>, document.getElementById('content'));/*where we want the  var App component to be rendered; second arg is
+    the div which will contain the app*/
+/*also */
 
     //ReactDOM.render(<Profile/>,<Hobbies/>, document.getElementById('content'));
 </script>
